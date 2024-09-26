@@ -1,1 +1,321 @@
 BTVN 2
+BT1
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 30px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        
+        form {
+            background-color: white;
+            padding: 20px;
+            max-width: 400px;
+            margin: auto;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            display: block;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background-color: #333;
+            color: rgb(255, 253, 253);
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+        
+        table {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0b0b0b;
+            color: white;
+        }
+
+        #total {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .section {
+            max-width: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Clothes</h1>
+    <hr>
+    <div class="section">
+        <form id="frm">
+            <p>
+                <label>
+                    PRODUCT NAME
+                    <input type="text" name="pname" id="pname">
+                </label>
+            </p>
+            <p>
+                <label>
+                    PRODUCT QUANTITY
+                    <input type="text" name="qty" id="qty">
+                </label>
+            </p>
+            <p>
+                PRODUCT PRICE
+                <input type="text" name="pri" id="pri">
+            </p>
+            <button type="button" onclick="add()">Add</button>
+            <button type="button">Cancel</button>
+        </form>
+
+        <table id="tb">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Total</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td id="total">0</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <script>
+        var id = 0;
+        var total = 0;
+
+        function add() {
+            id++;
+            var pname = document.getElementById("pname").value;
+            var qty = document.getElementById("qty").value;
+            var price = document.getElementById("pri").value;
+            var sub = qty * price;
+            var row = "<tr>";
+            row += "<td>" + id + "</td>";
+            row += "<td>" + pname + "</td>";
+            row += "<td>" + qty + "</td>";
+            row += "<td>" + price + "</td>";
+            row += "<td>" + sub + "</td>";
+            row += "</tr>";
+
+            total += parseFloat(sub);
+
+            document.getElementById("tbody").innerHTML += row;
+
+        
+            document.getElementById("total").innerText = total;
+        }
+    </script>
+</body>
+</html>
+BT2
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ <link rel="stylesheet" href="./css/bootstrap.min.css">
+ <script src=".js/bootstrap.min.js"></script>
+ <script src=".js/jquery.min.js"></script>
+ <script src="script.js"></script>
+ <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #4f99a4;
+        padding: 20px;
+        color: #333;
+    }
+
+    form {
+        background-color: #e0ffff;
+        padding: 20px;
+        max-width: 400px;
+        margin: auto;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        margin: 8px 0;
+        display: block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: #333;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        margin-right: 5px;
+    }
+
+    button:hover {
+        background-color: #555;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #333;
+        color: white;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: auto;
+        background-color: #d8f3f5;
+        padding: 10px;
+    }
+</style>
+    
+<body>
+    Fullname_Customer Name
+    <input type="text" id="name">
+    <br>
+    ID:
+    <input type="text" id="id">
+    <br>
+    Product_Name:
+    <input type="text" id="prdname">
+    <br>
+    Quantity:
+    <input type="text" id="qty">
+    <br>
+    Price:
+    <input type="text" id="price">
+    <br>
+    <input type="button" value="Save" onclick="save()">
+    <input type="button" value="Show" onclick="show()">
+    <input type="button" value="Reset" onclick="reset()">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Auto increment</th>
+                <th>Customer Name</th>
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody id="tbl"></tbody>
+    </table>
+    <script>
+        var arr = [];
+        function save() {
+            var a = {
+                name: document.getElementById('name').value,
+                id: document.getElementById('id').value,
+                prdname: document.getElementById('prdname').value,
+                qty: document.getElementById('qty').value,
+                price: document.getElementById('price').value,    
+            }
+        console.log(a);
+        arr.push(a);
+       }
+    function show() {
+        var html="";
+        for (i in arr) {
+            var n = i;
+            n++;
+            html += "<tr>";
+            html += "<td>" + (n) + "</td>";
+            html += "<td>" + arr[i].name + "</td>";
+            html += "<td>" + arr[i].id +  "</td>";
+            html += "<td>" + arr[i].prdname +  "</td>";
+            html += "<td>" + arr[i].qty +  "</td>";
+            html += "<td>" + arr[i].price +  "</td>";
+            html += "<td>" + parseFloat(arr[i].qty)*parseFloat(arr[i].price) +  "</td>";
+            html += "</tr>";
+            }
+            document.getElementById('tbl').innerHTML = html;
+
+        }
+        function reset() {
+            document.getElementById('name').value="";
+            document.getElementById('id').value="";
+            document.getElementById('prdname').value="";
+            document.getElementById('qty').value="";
+            document.getElementById('price').value="";
+        }
+    </script>
+    
+
+    
+
+
+
+    
+
+
+</body>
+</html>
