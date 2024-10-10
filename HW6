@@ -4,8 +4,8 @@ const tinhChuVi = (chieuDai, chieuRong) => 2 * (chieuDai + chieuRong);
 
 
 
-const chieuDai = 100000000000000000000000000;
-const chieuRong = 20000000000;
+const chieuDai = 10;
+const chieuRong = 2;
 
 
 
